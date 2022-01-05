@@ -130,7 +130,7 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr" >> /etc/ssh/sshd_config
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>" >> /etc/apache2/sites-available/sayurbox.conf
     fi
-
+    sed -i 's/www-data/dev/' /etc/apache2/envvars
     a2ensite sayurbox.conf
     a2dissite 000-default.conf
     systemctl restart apache2
